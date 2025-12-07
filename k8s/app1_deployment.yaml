@@ -18,4 +18,9 @@ spec:
         image: dockerbymariam/app1_nginx:latest
         ports:
         - containerPort: 80
+      volumes:
+      - name: app1-pv
+        persistentVolumeClaim:
+          claimName: app1-pvc
+
 
