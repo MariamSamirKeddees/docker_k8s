@@ -13,6 +13,22 @@ spec:
       labels:
         app: app1-nginx
     spec:
+      initContainers:
+        - name: init-cont-app1
+          image: dockerbymariam/app1_nginx:latest
+          command:
+            - sh
+            - -c
+            - |
+              if [ ! -f /mnt/html/index.html ]; then
+                echo "Copying index.html to PV"
+                cp /usr/share/nginx/html/index.html /mnt/html/index.html
+              else
+                echo "index.html already exists, skipping"
+              fi
+          volumeMounts:
+            - name: app1-pv
+              mountPath: /mnt/html
       containers:
       - name: app1-container
         image: dockerbymariam/app1_nginx:latest
