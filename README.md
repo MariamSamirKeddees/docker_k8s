@@ -8,4 +8,6 @@ then: created 2 containers from each image for testing and everything is going f
                           ====================================================
 - created a pvc in the same namespace for app1 => this created a pv automatically (reclaim policy is delete by default, i changed it to retain)
 
-- created a NodePort service from app1 
+- created a NodePort service from app1
+- created an initContainer within the deployment to check if the html file exists in the pv, if not it copies the file to it.
+ 
