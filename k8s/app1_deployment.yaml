@@ -18,7 +18,7 @@ spec:
         image: dockerbymariam/app1_nginx:latest
         volumeMounts:
           - name: app1-pv
-            mountPath: /app1-pv
+            mountPath: /usr/share/nginx/html/
         ports:
         - containerPort: 80
       volumes:
