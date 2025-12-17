@@ -10,4 +10,6 @@ then: created 2 containers from each image for testing and everything is going f
 
 - created a NodePort service from app1
 - created an initContainer within the deployment to check if the html file exists in the pv, if not it copies the file to it.
-- enabled the minikube ingress addon to install the nginx ingress controller 
+- enabled the minikube ingress addon to install the nginx ingress controller
+- made a change in the ingress.yaml file to enable the controller send the traffic to a specific service
+ so, i used the rewrite/target annotation, and ImplementationSpecific pathtype
