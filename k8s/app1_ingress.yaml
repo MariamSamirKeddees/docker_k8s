@@ -3,16 +3,18 @@ kind: Ingress
 metadata:
   name: app1-ingress
   namespace: app1-namespace
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  ingressClassName: app1-ingress
+  ingressClassName: nginx
   rules:
-  - http:
+  - host: www.mariam.com
+    http:
       paths:
       - path: /app1
-        pathType: Exact
+        pathType: ImplementationSpecific
         backend:
           service:
             name: app1-svc
             port:
               number: 80
-
